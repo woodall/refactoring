@@ -1,4 +1,4 @@
-require File.expand_path("../request_pricing_service", __FILE__)
+require File.expand_path("../lib/request_pricing_service", __FILE__)
 
 describe RequestPricingService do
   let(:request) do
