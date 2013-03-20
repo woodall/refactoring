@@ -16,105 +16,105 @@ describe RequestPricingService do
     it { should charge(82.19).for(52).pages }
   end
 
-  describe "Texas pricing" do
-    before { request.stub(state: "TX") }
+  # describe "Texas pricing" do
+  #   before { request.stub(state: "TX") }
 
-    it { should charge(25.00).for(0).pages }
-    it { should charge(25.00).for(1).pages }
-    it { should charge(25.00).for(19).pages }
-    it { should charge(25.00).for(20).pages }
-    it { should charge(25.50).for(21).pages }
-  end
+  #   it { should charge(25.00).for(0).pages }
+  #   it { should charge(25.00).for(1).pages }
+  #   it { should charge(25.00).for(19).pages }
+  #   it { should charge(25.00).for(20).pages }
+  #   it { should charge(25.50).for(21).pages }
+  # end
 
-  describe "Indiana pricing" do
-    before { request.stub(state: "IN") }
+  # describe "Indiana pricing" do
+  #   before { request.stub(state: "IN") }
 
-    it { should charge(20.00).for(0).pages }
-    it { should charge(20.00).for(1).pages }
-    it { should charge(20.00).for(10).pages }
-    it { should charge(13.00).for(11).pages }
-    it { should charge(32.50).for(50).pages }
-    it { should charge(52.25).for(51).pages }
-  end
+  #   it { should charge(20.00).for(0).pages }
+  #   it { should charge(20.00).for(1).pages }
+  #   it { should charge(20.00).for(10).pages }
+  #   it { should charge(13.00).for(11).pages }
+  #   it { should charge(32.50).for(50).pages }
+  #   it { should charge(52.25).for(51).pages }
+  # end
 
-  describe "North Carolina pricing" do
-    before { request.stub(state: "NC") }
+  # describe "North Carolina pricing" do
+  #   before { request.stub(state: "NC") }
 
-    it { should charge(10.00).for(0).pages }
-    it { should charge(10.00).for(1).pages }
-    it { should charge(18.75).for(25).pages }
-    it { should charge(19.25).for(26).pages }
-    it { should charge(56.25).for(100).pages }
-    it { should charge(56.50).for(101).pages }
-  end
+  #   it { should charge(10.00).for(0).pages }
+  #   it { should charge(10.00).for(1).pages }
+  #   it { should charge(18.75).for(25).pages }
+  #   it { should charge(19.25).for(26).pages }
+  #   it { should charge(56.25).for(100).pages }
+  #   it { should charge(56.50).for(101).pages }
+  # end
 
-  describe "New Jersey pricing" do
-    before { request.stub(state: "NJ") }
+  # describe "New Jersey pricing" do
+  #   before { request.stub(state: "NJ") }
 
-    it { should charge(0).for(0).pages }
-    it { should charge(11.00).for(1).pages }
-    it { should charge(20.00).for(10).pages }
-    it { should charge(110.00).for(100).pages }
-    it { should charge(110.25).for(101).pages }
-  end
+  #   it { should charge(0).for(0).pages }
+  #   it { should charge(11.00).for(1).pages }
+  #   it { should charge(20.00).for(10).pages }
+  #   it { should charge(110.00).for(100).pages }
+  #   it { should charge(110.25).for(101).pages }
+  # end
 
-  describe "California pricing" do
-    before { request.stub(state: "CA") }
+  # describe "California pricing" do
+  #   before { request.stub(state: "CA") }
 
-    it { should charge(4.00).for(0).pages }
-    it { should charge(4.10).for(1).pages }
-    it { should charge(5.00).for(10).pages }
-  end
+  #   it { should charge(4.00).for(0).pages }
+  #   it { should charge(4.10).for(1).pages }
+  #   it { should charge(5.00).for(10).pages }
+  # end
 
-  describe "New York pricing" do
-    before { request.stub(state: "NY") }
+  # describe "New York pricing" do
+  #   before { request.stub(state: "NY") }
 
-    it { should charge(0.00).for(0).pages }
-    it { should charge(2.00).for(1).pages }
-    it { should charge(28.00).for(14).pages }
-    it { should charge(30.00).for(15).pages }
-    it { should charge(31.00).for(16).pages }
+  #   it { should charge(0.00).for(0).pages }
+  #   it { should charge(2.00).for(1).pages }
+  #   it { should charge(28.00).for(14).pages }
+  #   it { should charge(30.00).for(15).pages }
+  #   it { should charge(31.00).for(16).pages }
 
-    context "a doctor request" do
-      before { request.stub(:requested_by_doctor? => true) }
+  #   context "a doctor request" do
+  #     before { request.stub(:requested_by_doctor? => true) }
 
-      it { should charge(0).for(0).pages }
-      it { should charge(0.75).for(1).pages }
-      it { should charge(7.50).for(10).pages }
-    end
-  end
+  #     it { should charge(0).for(0).pages }
+  #     it { should charge(0.75).for(1).pages }
+  #     it { should charge(7.50).for(10).pages }
+  #   end
+  # end
 
-  describe "Nevada pricing" do
-    before { request.stub(state: "NV") }
+  # describe "Nevada pricing" do
+  #   before { request.stub(state: "NV") }
 
-    it { should charge(0).for(0).pages }
-    it { should charge(0.60).for(1).pages }
-    it { should charge(6.00).for(10).pages }
-  end
+  #   it { should charge(0).for(0).pages }
+  #   it { should charge(0.60).for(1).pages }
+  #   it { should charge(6.00).for(10).pages }
+  # end
 
-  describe "Utah pricing" do
-    before { request.stub(state: "UT") }
+  # describe "Utah pricing" do
+  #   before { request.stub(state: "UT") }
 
-    it { should charge(0).for(0).pages }
-    it { should charge(15.50).for(1).pages }
-    it { should charge(20.00).for(10).pages }
-  end
+  #   it { should charge(0).for(0).pages }
+  #   it { should charge(15.50).for(1).pages }
+  #   it { should charge(20.00).for(10).pages }
+  # end
 
-  describe "a state without specific pricing statutes" do
-    before { request.stub(state: "CO") }
+  # describe "a state without specific pricing statutes" do
+  #   before { request.stub(state: "CO") }
 
-    it { should charge(185.00).for(0).pages }
-    it { should charge(185.00).for(1).pages }
-    it { should charge(185.00).for(10).pages }
+  #   it { should charge(185.00).for(0).pages }
+  #   it { should charge(185.00).for(1).pages }
+  #   it { should charge(185.00).for(10).pages }
 
-    context "a doctor request" do
-      before { request.stub(:requested_by_doctor? => true) }
+  #   context "a doctor request" do
+  #     before { request.stub(:requested_by_doctor? => true) }
 
-      it { should charge(60.00).for(0).pages }
-      it { should charge(61.00).for(1).pages }
-      it { should charge(70.00).for(10).pages }
-    end
-  end
+  #     it { should charge(60.00).for(0).pages }
+  #     it { should charge(61.00).for(1).pages }
+  #     it { should charge(70.00).for(10).pages }
+  #   end
+  # end
 end
 
 RSpec::Matchers.define :charge do |expected|
