@@ -43,7 +43,6 @@ end
 #   end
 # end
 
-# class Texas
 #   TX_MIN_CHARGE = 25.00
 
 #   #In addition, actual cost of mailing or shipping

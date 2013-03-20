@@ -1,3 +1,0 @@
-class GARequestPricingService < RequestPricingService
-
-end
