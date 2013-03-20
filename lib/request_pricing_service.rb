@@ -1,3 +1,22 @@
+class Illinois
+  def initialize(request, number_of_pages)
+    @request = request
+    @number_of_pages = number_of_pages
+  end
+
+  def price
+    handline_charge = 25.55
+    first_25 = handline_charge + 0.96 * 25
+    first_50 = first_25 + 0.64 * 50
+
+    return handline_charge if @number_of_pages < 1
+    return (first_50 + (@number_of_pages - 50) * 0.32) if @number_of_pages > 50
+    return (first_25 + (@number_of_pages - 25) * 0.64) if @number_of_pages > 25
+    return (handline_charge + (@number_of_pages) * 0.96)
+  end
+end
+
+
 class RequestPricingService
   def self.price(request, number_of_pages)
     if number_of_pages
@@ -15,8 +34,11 @@ class RequestPricingService
   end
 
 
+# let(:request) do
+#   stub(state: "CO", number_of_pages: 2, requested_by_doctor?: false)
+# end
 
-  IL_HANDLING_CHARGE = 25.55
+  HANDLING_CHARGE = 25.55
   IL_FIRST_25 = IL_HANDLING_CHARGE + 0.96 * 25
   IL_FIRST_50 = IL_FIRST_25 + 0.64 * 50
 
