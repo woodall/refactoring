@@ -1,10 +1,5 @@
 class RequestPricingService
-
-  def initialize(request, number_of_pages)
-    RPSFactory.new(request, number_of_pages)
-  end
-
-  def price
+  def self.price(request, number_of_pages)
     if number_of_pages
       state = request.state.upcase
       begin
