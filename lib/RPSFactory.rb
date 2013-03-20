@@ -1,10 +1,11 @@
+require 'IllinoisRequestPricingService'
+
 class RPSFactory
   def initialize(request, number_of_pages)
-    case request
-    when "IL"
-      IllinoisRequestPricingService.new(request, number_of_pages)
-    else
-      RequestPricingService.new(request, number_of_pages)
-    end
+    @state = IllinoisRequestPricingService.new(request, number_of_pages)
+  end
+
+  def price
+    @state.price
   end
 end
