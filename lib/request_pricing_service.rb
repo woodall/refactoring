@@ -8,7 +8,7 @@ class Illinois
   def price
     return price_above_50_pages if @number_of_pages > 50
     return price_above_25_pages if @number_of_pages > 25
-    return price_below_25_pages if @number_of_pages > 1
+    return price_below_25_pages if @number_of_pages >= 1
     return handling_charge
   end
 
@@ -43,39 +43,58 @@ private
   end
 end
 
+class RPSFactory
+  def initialize(request, number_of_pages)
+    @state = Illinois.new(request, number_of_pages)
+  end
+
+  def price
+    @state.price
+  end
+end
 
 class RequestPricingService
   def self.price(request, number_of_pages)
-    if number_of_pages
-      state = request.state.upcase
-      begin
-        return RequestPricingService.send("pages_price_#{state}", request, number_of_pages)
-      # rescue Exception # TOO DANGEROUS
-      rescue NoMethodError
-        puts "None of the states match pricing rules we defined, #{request.state} for request"
-        pages_price_NOSTATUTE(request, number_of_pages)
-      end
-   else
-     0.00
-   end
-  end
-
-
-# let(:request) do
-#   stub(state: "CO", number_of_pages: 2, requested_by_doctor?: false)
-# end
-
-  HANDLING_CHARGE = 25.55
-  IL_FIRST_25 = IL_HANDLING_CHARGE + 0.96 * 25
-  IL_FIRST_50 = IL_FIRST_25 + 0.64 * 50
-
-  def self.pages_price_IL(request, number_of_pages)
-    return IL_HANDLING_CHARGE if number_of_pages < 1
-    return (IL_FIRST_50 + (number_of_pages - 50) * 0.32) if number_of_pages > 50
-    return (IL_FIRST_25 + (number_of_pages - 25) * 0.64) if number_of_pages > 25
-    return (IL_HANDLING_CHARGE + (number_of_pages) * 0.96)
+    state = RPSFactory.new(request, number_of_pages)
+    state.price
   end
 end
+
+
+
+
+# class RequestPricingService
+#   def self.price(request, number_of_pages)
+#     if number_of_pages
+#       state = request.state.upcase
+#       begin
+#         return RequestPricingService.send("pages_price_#{state}", request, number_of_pages)
+#       # rescue Exception # TOO DANGEROUS
+#       rescue NoMethodError
+#         puts "None of the states match pricing rules we defined, #{request.state} for request"
+#         pages_price_NOSTATUTE(request, number_of_pages)
+#       end
+#    else
+#      0.00
+#    end
+#   end
+
+
+# # let(:request) do
+# #   stub(state: "CO", number_of_pages: 2, requested_by_doctor?: false)
+# # end
+
+#   HANDLING_CHARGE = 25.55
+#   IL_FIRST_25 = IL_HANDLING_CHARGE + 0.96 * 25
+#   IL_FIRST_50 = IL_FIRST_25 + 0.64 * 50
+
+#   def self.pages_price_IL(request, number_of_pages)
+#     return IL_HANDLING_CHARGE if number_of_pages < 1
+#     return (IL_FIRST_50 + (number_of_pages - 50) * 0.32) if number_of_pages > 50
+#     return (IL_FIRST_25 + (number_of_pages - 25) * 0.64) if number_of_pages > 25
+#     return (IL_HANDLING_CHARGE + (number_of_pages) * 0.96)
+#   end
+# end
 
 # class Texas
 #   TX_MIN_CHARGE = 25.00
