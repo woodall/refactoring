@@ -27,41 +27,6 @@ end
 #   end
 
 
-# # let(:request) do
-# #   stub(state: "CO", number_of_pages: 2, requested_by_doctor?: false)
-# # end
-
-#   HANDLING_CHARGE = 25.55
-#   IL_FIRST_25 = IL_HANDLING_CHARGE + 0.96 * 25
-#   IL_FIRST_50 = IL_FIRST_25 + 0.64 * 50
-
-#   def self.pages_price_IL(request, number_of_pages)
-#     return IL_HANDLING_CHARGE if number_of_pages < 1
-#     return (IL_FIRST_50 + (number_of_pages - 50) * 0.32) if number_of_pages > 50
-#     return (IL_FIRST_25 + (number_of_pages - 25) * 0.64) if number_of_pages > 25
-#     return (IL_HANDLING_CHARGE + (number_of_pages) * 0.96)
-#   end
-# end
-
-#   TX_MIN_CHARGE = 25.00
-
-#   #In addition, actual cost of mailing or shipping
-#   #  Also, a reasonable fee not to exceed $15.00 for executing affidavit.
-#   def self.pages_price_TX(request, number_of_pages)
-#     return TX_MIN_CHARGE if number_of_pages <= 20
-#     return (TX_MIN_CHARGE + (number_of_pages - 20) * 0.50)
-#   end
-
-#   IN_LABOR_FEE = 20.00
-#   IN_FIRST_10 = IN_LABOR_FEE
-#   IN_FIRST_50 = IN_FIRST_10 + 0.64 * 50
-
-#   def self.pages_price_IN(request, number_of_pages)
-#     return (IN_FIRST_50 + (number_of_pages - 50) * 0.25) if number_of_pages > 50  #>50
-#     return (IN_FIRST_10 + (number_of_pages - 25) * 0.50) if number_of_pages > 10  # 11-50
-#     return IN_LABOR_FEE
-#   end
-# end
 
 # class NorthCarolina
 #   NC_FIRST_25 = 0.75 * 25

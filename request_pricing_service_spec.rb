@@ -26,16 +26,16 @@ describe RequestPricingService do
     it { should charge(25.50).for(21).pages }
   end
 
-  # describe "Indiana pricing" do
-  #   before { request.stub(state: "IN") }
+  describe "Indiana pricing" do
+    before { request.stub(state: "IN") }
 
-  #   it { should charge(20.00).for(0).pages }
-  #   it { should charge(20.00).for(1).pages }
-  #   it { should charge(20.00).for(10).pages }
-  #   it { should charge(13.00).for(11).pages }
-  #   it { should charge(32.50).for(50).pages }
-  #   it { should charge(52.25).for(51).pages }
-  # end
+    it { should charge(20.00).for(0).pages }
+    it { should charge(20.00).for(1).pages }
+    it { should charge(20.00).for(10).pages }
+    it { should charge(13.00).for(11).pages }
+    it { should charge(32.50).for(50).pages }
+    it { should charge(52.25).for(51).pages }
+  end
 
   # describe "North Carolina pricing" do
   #   before { request.stub(state: "NC") }
